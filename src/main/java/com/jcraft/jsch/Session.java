@@ -2351,7 +2351,8 @@ public class Session {
   public int setPortForwardingR(String bind_address, int rport, String host, int lport,
       SocketFactory sf) throws JSchException {
     int allocated = _setPortForwardingR(bind_address, rport);
-    ChannelForwardedTCPIP.addPort(this, bind_address, rport == 0 ? allocated : rport, allocated, host, lport, sf);
+    ChannelForwardedTCPIP.addPort(this, bind_address, rport == 0 ? allocated : rport, allocated,
+        host, lport, sf);
     return allocated;
   }
 
@@ -2403,7 +2404,8 @@ public class Session {
   public int setPortForwardingR(String bind_address, int rport, String daemon, Object[] arg)
       throws JSchException {
     int allocated = _setPortForwardingR(bind_address, rport);
-    ChannelForwardedTCPIP.addPort(this, bind_address, rport == 0 ? allocated : rport, allocated, daemon, arg);
+    ChannelForwardedTCPIP.addPort(this, bind_address, rport == 0 ? allocated : rport, allocated,
+        daemon, arg);
     return allocated;
   }
 
@@ -2511,8 +2513,8 @@ public class Session {
   public int setPortForwardingR(String conf) throws JSchException {
     Forwarding f = parseForwarding(conf);
     int allocated = _setPortForwardingR(f.bind_address, f.port);
-    ChannelForwardedTCPIP.addPort(this, f.bind_address, f.port == 0 ? allocated : f.port, allocated, f.host, f.hostport,
-        null);
+    ChannelForwardedTCPIP.addPort(this, f.bind_address, f.port == 0 ? allocated : f.port, allocated,
+        f.host, f.hostport, null);
     return allocated;
   }
 
